@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "wisperai",
+  "productName": "Wisper Pro",
   "version": "0.1.0",
-  "identifier": "com.jaydeep.wisperai",
+  "identifier": "com.wisper.pro",
   "build": {
     "beforeDevCommand": "yarn dev",
     "devUrl": "http://localhost:1420",
@@ -10,11 +10,37 @@
     "frontendDist": "../dist"
   },
   "app": {
+    "macOSPrivateApi": true,
+    "trayIcon": {
+      "iconPath": "icons/icon.png",
+      "iconAsTemplate": true
+    },
     "windows": [
       {
-        "title": "wisperai",
-        "width": 800,
-        "height": 600
+        "label": "main",
+        "title": "Wisper Pro",
+        "width": 1000,
+        "height": 700,
+        "minWidth": 800,
+        "minHeight": 600,
+        "center": true,
+        "visible": false,
+        "decorations": true,
+        "transparent": false
+      },
+      {
+        "label": "menubar",
+        "title": "Wisper",
+        "url": "/menubar",
+        "width": 320,
+        "height": 420,
+        "visible": false,
+        "decorations": false,
+        "transparent": true,
+        "alwaysOnTop": true,
+        "skipTaskbar": true,
+        "resizable": false,
+        "focus": false
       }
     ],
     "security": {
@@ -30,6 +56,10 @@
       "icons/128x128@2x.png",
       "icons/icon.icns",
       "icons/icon.ico"
-    ]
+    ],
+    "macOS": {
+      "minimumSystemVersion": "12.0",
+      "entitlements": "./entitlements.plist"
+    }
   }
 }
